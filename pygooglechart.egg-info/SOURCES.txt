@@ -1,0 +1,4 @@
+pygooglechart.egg-info/PKG-INFO
+pygooglechart.egg-info/SOURCES.txt
+pygooglechart.egg-info/dependency_links.txt
+pygooglechart.egg-info/top_level.txt
