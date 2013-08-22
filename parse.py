@@ -7,14 +7,16 @@ import glob
 from pygooglechart import Chart
 from pygooglechart import SimpleLineChart
 from pygooglechart import Axis
+from pygooglechart import TextData
+
 
 
 path_to_emails = "/Users/anna.somova/smth/python_parse/emails/"
 email_tpl = "*.txt" 
-path_to_db = "/Users/anna.somova/smth/python_parse/test2.db"
+path_to_db = "/Users/anna.somova/smth/python_parse/"
 counts=[]
 try:
-    connection = db.connect(path_to_db)
+    connection = db.connect(path_to_db+"test2.db")
     with connection:
         cursor = connection.cursor()
         cursor.execute("DROP TABLE IF EXISTS cnt")
@@ -51,10 +53,10 @@ finally:
         connection.close()
 
         # Set the vertical range from 0 to 100
-        max_y = 100
+        max_y = 1000
 
         # Chart size of 200x125 pixels and specifying the range for the Y axis
-        chart = SimpleLineChart(200, 125, y_range=[0, max_y])
+        chart = SimpleLineChart(300, 325, y_range=[0, max_y])
 
         # Add the chart data
         data=[]
@@ -82,6 +84,7 @@ finally:
         chart.set_axis_labels(Axis.BOTTOM, \
                               [1,2])
 
-        chart.download('line-stripes.png')
+        chart.download(path_to_db+'line-stripes.png')
+        print chart.get_url()
 
 
